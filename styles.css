@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.game-container {
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.game-header {
+    padding: 20px;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: white;
+    text-align: center;
+}
+
+.game-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 15px;
+    border-radius: 8px;
+    min-width: 80px;
+}
+
+.stat-box span:first-child {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.stat-box span:last-child {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 20px;
+    perspective: 1000px;
+}
+
+.card {
+    position: relative;
+    height: 100px;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card.matched {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #a8ff78, #78ffd6);
+    cursor: default;
+}
+
+.card .front,
+.card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.card .front {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.card .back {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.game-controls {
+    padding: 15px;
+    text-align: center;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+#reset-btn {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+}
+
+@media (max-width: 600px) {
+    .game-header h1 {
+        font-size: 1.4rem;
+    }
+    
+    .stat-box {
+        padding: 8px 10px;
+        min-width: 70px;
+    }
+    
+    .stat-box span:last-child {
+        font-size: 1.2rem;
+    }
+    
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .card {
+        height: 80px;
+    }
+}
